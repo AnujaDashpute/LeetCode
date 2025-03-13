@@ -1,0 +1,31 @@
+class Solution {
+    public int romanToInt(String s) {
+        Map<Character, Integer> romanInt = new HashMap<>();
+        romanInt.put('I', 1);
+        romanInt.put('V', 5);
+        romanInt.put('X', 10);
+        romanInt.put('L',50);
+        romanInt.put('C', 100);
+        romanInt.put('D',500);
+        romanInt.put('M', 1000);
+
+        int total = 0;
+        int length = s.length();
+        for(int i=0;i<length;i++)
+        {
+            int currentVal = romanInt.get(s.charAt(i));
+
+            if(i<length-1 && currentVal<romanInt.get(s.charAt(i+1)))
+            {
+                total -= currentVal;
+            }
+            else
+            {
+                total += currentVal;
+            }
+            
+        }
+
+        return total;
+    }
+}
